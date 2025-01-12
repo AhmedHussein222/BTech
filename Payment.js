@@ -1,3 +1,7 @@
+/* cart counter  */
+document.getElementById("counter").innerHTML=JSON.parse(localStorage.getItem("cart-items")).length;
+
+
 document.getElementById("city").addEventListener("change", function () {
   const selectedCity = this.value;
   if (selectedCity) {

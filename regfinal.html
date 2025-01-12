@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>تسجيل المستخدم</title>
+  <title> Log in</title>
   <style>
     body {
       background-color: #f3f4f6;
@@ -101,29 +101,28 @@
     <div class="header">
       <img alt="B.TECH logo" src="./Images/logologin/logo.jpg"/>
     </div>
-    <h2>إنشاء حساب جديد</h2>
+    <h2>Create new account</h2>
     <p>
-      عندك حساب؟
-      <a href="login.html">تسجيل الدخول</a>
+      <a href="login.html">Log in </a>
     </p>
 
     <form id="registrationForm" onsubmit="registerUser(event)">
-      <label for="name">الاسم:</label>
+      <label for="name">Name:</label>
       <input type="text" id="name" name="name" required>
 
-      <label for="mobile">رقم الموبايل:</label>
+      <label for="mobile">Phone Number:</label>
       <input type="text" id="mobile" name="mobile" required>
 
-      <label for="email">البريد الإلكتروني (اختياري):</label>
+      <label for="email">E-mail (optional):</label>
       <input type="email" id="email" name="email">
 
-      <label for="password">كلمة السر:</label>
-      <input type="password" id="password" name="password" placeholder="كلمة السر" required />
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" placeholder="Password" required />
 
-      <label for="confirm-password">أعد إدخال كلمة السر:</label>
-      <input type="password" id="confirm-password" name="confirmPassword" placeholder="أعد إدخال كلمة السر" required />
+      <label for="confirm-password">Confirm Password:</label>
+      <input type="password" id="confirm-password" name="confirmPassword" placeholder="Confirm Password" required />
 
-      <button type="submit">تسجيل</button>
+      <button type="submit">Log in</button>
     </form>
 
   </div>
@@ -141,26 +140,24 @@
 
       
       if (!mobile || !name || !password || !confirmPassword) {
-        alert('يرجى ملء جميع الحقول الإلزامية.');
+        alert('Please fill in all required fields.');
         return;
       }
 
       if (password !== confirmPassword) {
-        alert('كلمة السر وتأكيد كلمة السر غير متطابقين.');
+        alert('Password and confirm password do not match.');
         return;
       }
 
       if (email && !isValidEmail(email)) {
-        alert('يرجى إدخال بريد إلكتروني صالح.');
+        alert('Please enter a valid email address.');
         return;
       }
 
       if (!isStrongPassword(password)) {
-        alert('كلمة السر يجب أن تحتوي على حرف كبير، رقم، ورمز خاص (@, #, $, etc.).');
+        alert('Password must contain an uppercase letter, a number, and a special character (@, #, $, etc.).');
         return;
       }
-
-     
       const users = JSON.parse(localStorage.getItem('users')) || [];
       function isUserExists(users, mobile) {
   for (let i = 0; i < users.length; i++) {
@@ -171,25 +168,20 @@
   return false; 
    }
 
+  if (isUserExists(users, mobile)) {
+    alert('Mobile number is already registered.');
+    return;
+  }
 
-if (isUserExists(users, mobile)) {
-  alert('رقم الموبايل مسجل بالفعل.');
-  return;
-}
+  // Add new user
+  const newUser = { name, mobile, email: email || 'Not available', password };
+  users.push(newUser);
 
-      // Add new user
-      const newUser = { name, mobile, email: email || 'غير متوفر', password };
-      users.push(newUser);
+  localStorage.setItem('users', JSON.stringify(users));
 
-     
-      localStorage.setItem('users', JSON.stringify(users));
-
-    
-
-      
-      document.getElementById('registrationForm').reset();
-      alert('تم تسجيل المستخدم بنجاح!');
-    }
+  document.getElementById('registrationForm').reset();
+  alert('User registered successfully!');
+  }
 
     function isValidEmail(email) {
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;

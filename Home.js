@@ -9,7 +9,8 @@ user.addEventListener("click",function()
     window.open("regfinal.html","_self")
 })
 /* cart counter  */
-document.getElementById("counter").innerHTML=JSON.parse(localStorage.getItem("cart-items")).length
+let cartItems = JSON.parse(localStorage.getItem("cart-items")) || [];
+document.getElementById("counter").innerHTML = cartItems.length;
 
 
 //slider
@@ -212,17 +213,20 @@ function Getprobyname(Catego, inputSearch) {
             var category = categories[i]; 
             for (var j = 0; j < category.products.length; j++) {
                 var pro = category.products[j]; 
+
                 if (pro.price <= 350) {
 
                     filterbyprice.push(pro); 
                 }
             }
         }
+        console.log(filterbyprice);
+        
         
         let Containerlessprice = document.getElementById("prolessprice");
         
         for (var k = 0; k < filterbyprice.length; k++) {
-            var prod = filterbyprice[k]; 
+            let prod = filterbyprice[k]; 
            // let wishlist= document.createElement("p");
           //  wishlist.innerHTML='<i class="fa-regular fa-heart"></i>'
             let imgprod = document.createElement("img");
@@ -253,6 +257,9 @@ function Getprobyname(Catego, inputSearch) {
             prodDiv.appendChild(priceprod);
             prodDiv.appendChild(brandprod);
     
+            prodDiv.addEventListener("click",function () {
+                window.location.href = `Product_Details.html?id=${prod.id}&discount=20`; 
+            })
             Containerlessprice.appendChild(prodDiv);
         }
     }

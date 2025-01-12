@@ -1,6 +1,7 @@
 /* card counter*/
 
-document.getElementById("counter").innerHTML=JSON.parse(localStorage.getItem("cart-items")).length;
+const cartItems = JSON.parse(localStorage.getItem("cart-items")) || [];
+document.getElementById("counter").innerHTML = cartItems.length;
 /* */
 
 
@@ -66,29 +67,44 @@ document.addEventListener("DOMContentLoaded", function () {
         `;
 
     addToCartButton.style.display = "inline-block";
-        /*   connect cart with product */
+        /*   connect cart  and favorite with product */
     addToCartButton.addEventListener("click", function () {
-      const cart = JSON.parse(localStorage.getItem("cart-items")) || [];
-      cart.push({
-        p_id: product.id,
-       
-      });
-      localStorage.setItem("cart-items", JSON.stringify(cart));
-      location.reload();
-      alert("Product added to cart!");
+      const users = JSON.parse(localStorage.getItem("users")) || [];
+      if (users.length > 0) {
+        const cart = JSON.parse(localStorage.getItem("cart-items")) || [];
+        cart.push({
+          p_id: product.id,
+        });
+        localStorage.setItem("cart-items", JSON.stringify(cart));
+        location.reload();
+        alert("Product added to cart!");
+      } else {
+        alert("Log in to add to cart!");
+        location.href = "login.html";
+      }
+      
     });
 
     const favoriteButton = container.querySelector(".favorite-btn");
-    favoriteButton.addEventListener("click", function () {
-      const fav = JSON.parse(localStorage.getItem("fav-items")) || [];
-      fav.push({
-        p_id: product.id,
-      });
-      localStorage.setItem("fav-items", JSON.stringify(fav));
-      favoriteButton.classList.toggle("active");
-    });
-  }
+  favoriteButton.addEventListener("click", function () {
+    const fav = JSON.parse(localStorage.getItem("fav-items")) || [];
+
+
+
+
+    const index = fav.findIndex(element => element.p_id == product.id);
+    
+    if (index !== -1) {
+      fav.splice(index, 1);
+    } else {
+      fav.push({ p_id: product.id });
+    }
+    
+    localStorage.setItem("fav-items", JSON.stringify(fav));
+    favoriteButton.classList.toggle("active");
+  });
   
+}
 
   const categoryDropdown = document.getElementById("categories");
   if (categoryDropdown) {
