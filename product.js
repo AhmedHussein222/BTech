@@ -2,12 +2,14 @@
 const cartItems = localStorage.getItem("cart-items");
 document.getElementById("counter").innerHTML = cartItems ? JSON.parse(cartItems).length : 0;
 
+/* scroll to top */
+window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+});
 
-// Register button click
-// let user = document.getElementById("register");
-// user.addEventListener("click", function() {
-//     window.open("regfinal.html", "_self");
-// });
+
+
 
 // Function to get category ID from the URL
 function getCategoryId() {
@@ -158,8 +160,3 @@ const index = fav.findIndex(element => element.p_id == productId);
 }
 
 
-// Prevent scroll restoration
-if (window.history.scrollRestoration) {
-    window.history.scrollRestoration = 'manual'; 
-}
-window.scrollTo(0, 0);

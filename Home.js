@@ -1,7 +1,8 @@
-if (window.history.scrollRestoration) {
-    window.history.scrollRestoration = 'manual'; // Disable automatic scroll restoration
-}
-window.scrollTo(0, 0);
+
+window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+});
 //login
 let user = document.getElementById("register")
 user.addEventListener("click",function()

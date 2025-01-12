@@ -2,7 +2,12 @@
 
 const cartItems = JSON.parse(localStorage.getItem("cart-items")) || [];
 document.getElementById("counter").innerHTML = cartItems.length;
-/* */
+
+/* scroll to top */
+window.scrollTo({
+  top: 0,
+  behavior: "smooth"
+});
 
 
 document.addEventListener("DOMContentLoaded", function () {

@@ -2,6 +2,13 @@
 document.getElementById("counter").innerHTML=JSON.parse(localStorage.getItem("cart-items")).length;
 
 
+/* scroll to top */
+window.scrollTo({
+  top: 0,
+  behavior: "smooth"
+});
+
+
 document.getElementById("city").addEventListener("change", function () {
   const selectedCity = this.value;
   if (selectedCity) {
@@ -36,34 +43,6 @@ function showMessage() {
   location.reload();
 }
 
-function calculateTotalItems() {
-  const orderItems = document.querySelectorAll(".order-items li");
-  const totalQuantity = orderItems.length;
-  const totalQuantitySpan = document.querySelector(
-    ".summary-footer div:nth-child(1) span:last-child"
-  );
-  totalQuantitySpan.textContent = `${totalQuantity} items`;
-}
-
-function calculateTotalPrice() {
-  const orderItems = document.querySelectorAll(".order-items li");
-  let totalPrice = 0;
-
-  orderItems.forEach((item) => {
-    const priceText = item.querySelector("span:last-child").textContent;
-    const price = parseFloat(
-      priceText.replace(/,/g, "").replace("EGP", "").trim()
-    );
-    totalPrice += price;
-  });
-
-  const totalPriceSpan = document.querySelector(".total span:last-child");
-  totalPriceSpan.textContent = `${totalPrice.toLocaleString()} EGP`;
-}
-
-calculateTotalItems();
-calculateTotalPrice();
-
 function showMessage() {
   // Get the values from the fields
   const fullName = document.getElementById("full-name").value.trim();
@@ -92,7 +71,7 @@ function showMessage() {
   location.reload();
 }
 
-/*    */
+/*  display summary of order  */
 
 order_items= document.getElementById("order-items");
 cart_items= JSON.parse(localStorage.getItem("cart-items"));
@@ -141,10 +120,3 @@ console.log(total);
 
 document.getElementById("quantity").innerHTML = cart_items.length + " Items";
 document.getElementById("total").innerHTML = total + " EGP";
-
-
-
-
-
-
-

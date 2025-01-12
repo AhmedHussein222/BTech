@@ -1,3 +1,14 @@
+/* cart counter  */
+document.getElementById("navcounter").innerHTML=JSON.parse(localStorage.getItem("cart-items")).length
+                    
+                                
+/* scroll to top */
+window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+});
+
+
 cart_items = document.getElementById("cart-items")
 fav_items = document.getElementById("fav-items")
 counter = document.getElementById("counter")
@@ -127,10 +138,6 @@ function displayProducts(categories) {
         
 
 
-/* cart counter  */
-document.getElementById("navcounter").innerHTML=JSON.parse(localStorage.getItem("cart-items")).length
-                    
-                                
         
 
 function popup(p_id) 
@@ -166,8 +173,8 @@ function cancel() {
       }
     });
   } else {
-    console.error("Dropdown element not found!");
-  }
+    console.error("Dropdown element not found!");
+ }
  
     
 

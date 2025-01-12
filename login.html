@@ -86,7 +86,7 @@
     <h2>Log in</h2>
     <form id="loginForm" onsubmit="loginUser(event)">
       <label for="mobile">Phone Number : </label>
-      <input type="text" id="mobile" name="mobile" required>
+      <input type="number" id="mobile" name="mobile" required>
 
       <label for="password">password : </label>
       <input type="password" id="password" name="password" required>
@@ -122,10 +122,10 @@
       const user = findUser(users, mobile, password);
 
       if (user) {
-        alert('تم تسجيل الدخول بنجاح!');
+        alert('Login successful!');
         window.location.href = './Home.html'; 
       } else {
-        errorMessage.textContent = 'رقم الموبايل أو كلمة السر غير صحيحة.';
+        errorMessage.textContent = 'Incorrect mobile number or password.';
       }
     }
   </script>
