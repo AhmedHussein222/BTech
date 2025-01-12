@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>تسجيل المستخدم</title>
+  <style>
+    body {
+      background-color: #f3f4f6;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      background-color: #ffffff;
+      width: 100%;
+      max-width: 450px;
+      padding: 24px;
+      border-radius: 8px;
+      box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .header {
+      text-align: center;
+      width: 100%;
+    }
+
+    .header img {
+      height: auto;
+      width: 20%;
+    }
+
+    h2 {
+      text-align: center;
+      font-size: 24px;
+      font-weight: 600;
+    }
+
+    p {
+      text-align: center;
+      color: #6b7280;
+      margin-bottom: 24px;
+    }
+
+    p a {
+      color: #3b82f6;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    label {
+      color: #374151;
+      margin-bottom: 8px;
+      font-size: 14px;
+    }
+
+    input {
+      width: 90%;
+      padding: 12px 16px;
+      margin-bottom: 16px;
+      border: 1px solid #d1d5db;
+      border-radius: 8px;
+      outline: none;
+      font-size: 14px;
+      transition: border-color 0.2s;
+    }
+
+    input:focus {
+      border-color: #3b82f6;
+      box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+    }
+
+    button {
+      width: 90%;
+      background-color: #e5e7eb;
+      color: #374151;
+      padding: 12px;
+      border-radius: 8px;
+      transition: background-color 0.2s;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    button:hover {
+      background-color: #d1d5db;
+    }
+
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <img alt="B.TECH logo" src="./Images/logologin/logo.jpg"/>
+    </div>
+    <h2>إنشاء حساب جديد</h2>
+    <p>
+      عندك حساب؟
+      <a href="login.html">تسجيل الدخول</a>
+    </p>
+
+    <form id="registrationForm" onsubmit="registerUser(event)">
+      <label for="name">الاسم:</label>
+      <input type="text" id="name" name="name" required>
+
+      <label for="mobile">رقم الموبايل:</label>
+      <input type="text" id="mobile" name="mobile" required>
+
+      <label for="email">البريد الإلكتروني (اختياري):</label>
+      <input type="email" id="email" name="email">
+
+      <label for="password">كلمة السر:</label>
+      <input type="password" id="password" name="password" placeholder="كلمة السر" required />
+
+      <label for="confirm-password">أعد إدخال كلمة السر:</label>
+      <input type="password" id="confirm-password" name="confirmPassword" placeholder="أعد إدخال كلمة السر" required />
+
+      <button type="submit">تسجيل</button>
+    </form>
+
+  </div>
+
+  <script>
+    function registerUser(event) {
+      event.preventDefault();
+
+      
+      const name = document.getElementById('name').value.trim();
+      const mobile = document.getElementById('mobile').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const password = document.getElementById('password').value.trim();
+      const confirmPassword = document.getElementById('confirm-password').value.trim();
+
+      
+      if (!mobile || !name || !password || !confirmPassword) {
+        alert('يرجى ملء جميع الحقول الإلزامية.');
+        return;
+      }
+
+      if (password !== confirmPassword) {
+        alert('كلمة السر وتأكيد كلمة السر غير متطابقين.');
+        return;
+      }
+
+      if (email && !isValidEmail(email)) {
+        alert('يرجى إدخال بريد إلكتروني صالح.');
+        return;
+      }
+
+      if (!isStrongPassword(password)) {
+        alert('كلمة السر يجب أن تحتوي على حرف كبير، رقم، ورمز خاص (@, #, $, etc.).');
+        return;
+      }
+
+     
+      const users = JSON.parse(localStorage.getItem('users')) || [];
+      function isUserExists(users, mobile) {
+  for (let i = 0; i < users.length; i++) {
+    if (users[i].mobile === mobile) {
+      return true; 
+    }
+  }
+  return false; 
+   }
+
+
+if (isUserExists(users, mobile)) {
+  alert('رقم الموبايل مسجل بالفعل.');
+  return;
+}
+
+      // Add new user
+      const newUser = { name, mobile, email: email || 'غير متوفر', password };
+      users.push(newUser);
+
+     
+      localStorage.setItem('users', JSON.stringify(users));
+
+    
+
+      
+      document.getElementById('registrationForm').reset();
+      alert('تم تسجيل المستخدم بنجاح!');
+    }
+
+    function isValidEmail(email) {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return emailRegex.test(email);
+    }
+
+    function isStrongPassword(password) {
+      const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&#])[A-Za-z\d@$!%*?&#]{8,}$/;
+      return passwordRegex.test(password);
+    }
+  </script>
+</body>
+</html>

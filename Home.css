@@ -1,0 +1,150 @@
+body {
+  font-family: "Roboto", sans-serif;
+  padding: 0;
+  margin: 0;
+}
+
+nav {
+  background-color: black;
+  color: white;
+  height: 45px;
+  font-size: x-small;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+  width: 100%;
+}
+nav a {
+  font-weight: bold;
+  color: #ffff;
+}
+nav a:hover {
+  color: #03a9f4;
+}
+nav ul {
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  align-items: center;
+  height: 100%;
+}
+
+.left,
+.right {
+  display: flex;
+}
+
+li {
+  margin: 0 15px;
+  transition: color 0.3s;
+  line-height: 45px;
+}
+li:hover {
+  color: #03a9f4;
+}
+
+header {
+  background-color: white;
+  color: white;
+  padding: 10px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+nav ul,
+header .headertop {
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  align-items: center;
+  height: 100%;
+}
+.headertop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.search {
+  background-color: #f4f5f6;
+  padding: 10px 20px;
+  border-radius: 10px;
+  box-shadow: 5px 5px;
+  flex-grow: 2;
+  margin-right: 10px;
+}
+
+.search:hover {
+  background-color: #d3d8de;
+}
+.searchinput {
+  margin-right: 4px;
+  background-color: #f4f5f6;
+  border: 0;
+}
+.searchinput:hover {
+  background-color: #d3d8de;
+}
+.searchinput::placeholder {
+  color: #7f8286;
+}
+#sliderimgs {
+  height: 300px;
+  width: 95%;
+  margin-left: 20px;
+  border-radius: 1%;
+  margin-top: 10px;
+}
+#prolessprice {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+#whybtech {
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+#whyb.tech li {
+  list-style: none;
+}
+.btchimg {
+  width: 200px;
+}
+footer {
+  height: 20%;
+  background-color: rgb(8, 8, 8);
+  color: white;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+a {
+  text-decoration: none;
+  color: #a6a9ae;
+}
+a:hover {
+  color: white;
+}
+ul {
+  list-style-type: none;
+}
+.h3css {
+  color: white;
+}
+#divcontain4 {
+  border-top: 1px solid gray;
+  display: flex;
+  justify-content: space-between;
+  color: #7f8286;
+}
+.socialimgs {
+  width: 30px;
+  margin-left: 4px;
+}
+.appbutton {
+  width: 120px;
+}
