@@ -61,9 +61,7 @@ function showMessage() {
     return;
   }
 
-  alert("The order has been successfully completed.");
-  location.reload();
-}
+
 
 /*    */
 
