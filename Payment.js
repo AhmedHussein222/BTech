@@ -64,7 +64,10 @@ function calculateTotalPrice() {
 calculateTotalItems();
 calculateTotalPrice();
 
-
+function showMessage() {
+  alert("The request was completed successfully");
+  location.reload();
+}
 
 /*    */
 
