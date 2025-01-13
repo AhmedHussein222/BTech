@@ -2,11 +2,7 @@
 const cartItems = localStorage.getItem("cart-items");
 document.getElementById("counter").innerHTML = cartItems ? JSON.parse(cartItems).length : 0;
 
-/* scroll to top */
-window.scrollTo({
-    top: 0,
-    behavior: "smooth"
-});
+
 
 
 

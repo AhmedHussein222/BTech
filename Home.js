@@ -1,8 +1,4 @@
 
-window.scrollTo({
-    top: 0,
-    behavior: "smooth"
-});
 //login
 let user = document.getElementById("register")
 user.addEventListener("click",function()

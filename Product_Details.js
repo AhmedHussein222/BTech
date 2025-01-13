@@ -3,11 +3,7 @@
 const cartItems = JSON.parse(localStorage.getItem("cart-items")) || [];
 document.getElementById("counter").innerHTML = cartItems.length;
 
-/* scroll to top */
-window.scrollTo({
-  top: 0,
-  behavior: "smooth"
-});
+
 
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -173,10 +169,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const navbarHeight = document.querySelector(".menu2").offsetHeight;
         const elementPosition = targetElement.offsetTop;
         const offsetPosition = elementPosition - 3 * navbarHeight;
-        window.scrollTo({
-          top: offsetPosition,
-          behavior: "smooth",
-        });
+
       }
     });
   });

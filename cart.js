@@ -2,11 +2,7 @@
 document.getElementById("navcounter").innerHTML=JSON.parse(localStorage.getItem("cart-items")).length
                     
                                 
-/* scroll to top */
-window.scrollTo({
-    top: 0,
-    behavior: "smooth"
-});
+
 
 
 cart_items = document.getElementById("cart-items")

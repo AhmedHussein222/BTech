@@ -2,12 +2,6 @@
 document.getElementById("counter").innerHTML=JSON.parse(localStorage.getItem("cart-items")).length;
 
 
-/* scroll to top */
-window.scrollTo({
-  top: 0,
-  behavior: "smooth"
-});
-
 
 document.getElementById("city").addEventListener("change", function () {
   const selectedCity = this.value;
