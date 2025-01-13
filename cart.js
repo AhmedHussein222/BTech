@@ -168,9 +168,7 @@ function cancel() {
         window.location.href = selectedValue;
       }
     });
-  } else {
-    console.error("Dropdown element not found!");
- }
+  }
  
     
 

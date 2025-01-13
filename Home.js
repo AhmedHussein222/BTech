@@ -226,8 +226,8 @@ function Getprobyname(Catego, inputSearch) {
         
         for (var k = 0; k < filterbyprice.length; k++) {
             let prod = filterbyprice[k]; 
-           // let wishlist= document.createElement("p");
-          //  wishlist.innerHTML='<i class="fa-regular fa-heart"></i>'
+         
+
             let imgprod = document.createElement("img");
             imgprod.src = prod.img;
             imgprod.style.width = "180px";
@@ -250,7 +250,7 @@ function Getprobyname(Catego, inputSearch) {
             prodDiv.style.borderRadius = "2%";
             prodDiv.style.padding = "5px";
             prodDiv.style.marginTop = "20px";
-           // prodDiv.appendChild(wishlist);
+           
             prodDiv.appendChild(imgprod);
             prodDiv.appendChild(nameprod);
             prodDiv.appendChild(priceprod);
