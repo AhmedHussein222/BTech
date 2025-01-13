@@ -15,7 +15,10 @@ let slid = document.getElementById("sliderimgs")
 let imgs =["https://btech.com/media/homecontent/banner/2/3/2368_px_x_800_en_hoover.png",
  "https://slidebazaar.com/wp-content/uploads/2021/09/product-banner-jpg.webp",
  "https://btech.com/media/homecontent/banner/w/e/web-banner__2368x800_en1_khjg_df.jpg",
- "https://btech.com/media/homecontent/banner/2/3/2368x800_en_5.jpg"]
+ "https://btech.com/media/homecontent/banner/2/3/2368x800_en_5.jpg"
+
+ 
+]
  let i =0 ;
 function Autoplayimg()
 {

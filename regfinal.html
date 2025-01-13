@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title> Log in</title>
+  <title> Sign up</title>
   <style>
     body {
       background-color: #f3f4f6;
@@ -111,7 +111,7 @@
       <input type="text" id="name" name="name" required>
 
       <label for="mobile">Phone Number:</label>
-      <input type="number" id="mobile" name="mobile" required>
+      <input type="text" id="mobile" name="mobile" required>
 
       <label for="email">E-mail (optional):</label>
       <input type="email" id="email" name="email">
@@ -146,6 +146,11 @@
 
       if (password !== confirmPassword) {
         alert('Password and confirm password do not match.');
+        return;
+      }
+
+      if (isNaN(mobile)) {
+        alert('Enter Valid Mobile!');
         return;
       }
 
